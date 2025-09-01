@@ -1,0 +1,96 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/mcp-server",
+    "crates/mcp-protocol", 
+    "crates/crawler",
+    "crates/embeddings",
+    "crates/vector-store",
+    "crates/graph-store",
+    "crates/storage",
+    "crates/search",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["MCP Crawl4AI RAG Team"]
+license = "MIT"
+repository = "https://github.com/your-org/mcp-crawl4ai-rag-rust"
+
+[workspace.dependencies]
+# Core async runtime
+tokio = { version = "1.41", features = ["full"] }
+
+# Web framework
+axum = { version = "0.8", features = ["ws", "macros"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "trace", "limit", "timeout"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bytes = "1.8"
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Database clients
+qdrant-client = "1.15"
+neo4rs = "0.8"  # For Memgraph
+
+# Storage
+rocksdb = "0.24"
+duckdb = "1.1"
+memmap2 = "0.9"
+
+# ML/Embeddings
+candle-core = "0.9"
+candle-nn = "0.9" 
+candle-transformers = "0.9"
+
+# Search
+tantivy = "0.25"
+simsimd = "5.9"
+
+# Utilities
+uuid = { version = "1.11", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+url = "2.5"
+reqwest = { version = "0.12", features = ["stream", "rustls-tls"] }
+futures = "0.3"
+pin-project-lite = "0.2"
+num_cpus = "1.16"
+
+# Parallel processing
+rayon = "1.10"
+
+# Random number generation
+fastrand = "2.0"
+
+# Regular expressions
+regex = "1.11"
+
+# Streaming utilities
+tokio-stream = "0.1"
+
+# Testing
+mockall = "0.13"
+proptest = "1.6"
+criterion = "0.7"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+debug = false
+strip = true
+
+[profile.bench]
+inherits = "release"
+debug = true

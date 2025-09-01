@@ -1,0 +1,33 @@
+[package]
+name = "graph-store"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+# Workspace dependencies
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+
+# Graph database (Memgraph compatible)
+neo4rs.workspace = true
+
+# File processing
+syn = { version = "2.0", features = ["full", "visit"] }
+walkdir = "2.5"
+tempfile = "3.14"
+regex.workspace = true
+
+# Utilities
+async-trait = "0.1"
+
+[dev-dependencies]
+mockall.workspace = true
+testcontainers = "0.25"

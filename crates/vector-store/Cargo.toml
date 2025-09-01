@@ -1,0 +1,41 @@
+[package]
+name = "vector-store"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+# Workspace dependencies
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+bytes.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+
+# Vector database
+qdrant-client.workspace = true
+tonic = "0.12"
+
+# Internal
+embeddings = { path = "../embeddings" }
+
+# Utilities
+async-trait = "0.1"
+dashmap = "6.1"
+futures.workspace = true
+
+[dev-dependencies]
+mockall.workspace = true
+testcontainers = "0.25"
+testcontainers-modules = "0.13"
+criterion.workspace = true
+futures.workspace = true
+
+[[bench]]
+name = "quantization_bench"
+harness = false

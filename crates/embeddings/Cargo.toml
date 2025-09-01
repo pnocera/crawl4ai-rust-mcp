@@ -1,0 +1,36 @@
+[package]
+name = "embeddings"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+# Workspace dependencies
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+bytes.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+futures.workspace = true
+
+# ML/Embeddings
+candle-core.workspace = true
+candle-nn.workspace = true
+candle-transformers.workspace = true
+tokenizers = "0.21"
+ndarray = "0.16"
+
+# Model management
+hf-hub = { version = "0.3", features = ["tokio"] }
+cached = "0.54"
+
+# Text processing
+unicode-normalization = "0.1"
+unicode_categories = "0.1"
+
+[dev-dependencies]
+criterion.workspace = true
+approx = "0.5"
